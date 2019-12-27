@@ -13,31 +13,42 @@
 </head>
 <body>
 
-    <div class="container-fluid vh-100"> <!--This is where our game will live-->
+    <div class="container-fluid d-flex h-100 flex-column"> <!--This is where our game will live-->
 
         <!--Title-->
-        <div class="row">
+        <div class="row bg-dark mb-2">
             <div class="col text-center">
-                <h1>Checkers</h1>
+                <h1 class="text-light">Checkers</h1>
+            </div>
+        </div>
+
+        <!--Icon-->
+        <div class="row mb-2">
+            <div class="col text-center">
+                <img class="img-fluid" src="assets/man.svg">
             </div>
         </div>
 
         <!--Menu buttons-->
-        <div class="row">
-            <div class="col text-center">
-                <button class="btn">Play</button>
-            </div>
-        </div>
+        <div class="row flex-grow-1">
+            <div class="col">
+                <div class="row mb-2 justify-content-center">
+                    <div class="col-3 text-center">
+                        <button class="btn btn-dark btn-block">Play</button>
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col text-center">
-                <button class="btn">Rules</button>
-            </div>
-        </div>
+                <div class="row mb-2 justify-content-center">
+                    <div class="col-3 text-center">
+                        <button class="btn btn-dark btn-block">Rules</button>
+                    </div>
+                </div>
 
-        <div class="row text-center">
-            <div class="col w-100">
-                <button class="btn">Exit</button>
+                <div class="row text-center justify-content-center">
+                    <div class="col-3 text-center">
+                        <button class="btn btn-dark btn-block">Exit</button>
+                    </div>
+                </div>
             </div>
         </div>
 
