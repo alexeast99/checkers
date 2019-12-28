@@ -13,12 +13,22 @@
 </head>
 <body>
 
-    <div class="container-fluid h-100 bg-dark">
-        <div class="row h-100 align-items-center">
-            <div class="col">
-                <a class="btn btn-light" href="index.html">Home</a>
+    <div class="container-fluid h-100">
+        <!--Encapsulating row and column-->
+        <div class="row h-100 justify-content-center">
+
+            <!--Decorative column-->
+            <div class="col"></div>
+
+            <!--Column containing all text and sub-rows-->
+            <div class="col-6 bg-dark p-0 h-100">
+
+                <!--Home button-->
+                <a class="btn btn-light mt-3 ml-3" href="index.html">Home</a>
+
+                <!--Rules and game description-->
                 <div class="row justify-content-center">
-                    <div class="col-5 text-light">
+                    <div class="col text-light">
                         <h2 class="mb-0 text-center">What is Checkers?</h2>
                         <p class="mt-0 p-2">
                             Checkers is a board game played between two people on an 8x8 checked board. The pieces of checkers are
@@ -30,7 +40,7 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-5 text-light">
+                    <div class="col text-light">
                         <h2 class="mb-0 text-center">How to Play</h2>
                         <p class="mt-0 p-2">
                             Pieces are always moved diagonally. A piece can move diagonally forward over another piece if the
@@ -45,7 +55,7 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-5 text-light">
+                    <div class="col text-light">
                         <h2 class="text-center mb-0">Other Rules</h2>
                         <p class="mt-0 p-2">
                             * If a player has an opportunity to jump, they must do so.
@@ -55,7 +65,12 @@
                         </p>
                     </div>
                 </div>
+
             </div>
+
+            <!--Decorative column-->
+            <div class="col"></div>
+
         </div>
 
     </div>
