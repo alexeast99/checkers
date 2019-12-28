@@ -1,0 +1,23 @@
+{
+  "name": "checkers",
+  "version": "1.0.0",
+  "description": "Simple checkers game.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexeast99/checkers.git"
+  },
+  "author": "Alex Eastman, Vikram Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexeast99/checkers/issues"
+  },
+  "homepage": "https://github.com/alexeast99/checkers#readme",
+  "devDependencies": {
+    "electron": "^7.1.7"
+  }
+}
