@@ -22,15 +22,19 @@ class board {
         "B1", "B3", "B5", "B7",
         "C0", "C2", "C4", "C6"
     ];
+
+    pieces = [];
 }
 
 class piece {
-    constructor(color, position) {
+    constructor(color, position, id) {
         this.color = "assets/images/decorative_" + color + ".svg";
         this.position = position;
-        this.html = "<img src=" + this.color + " style='height: 100%;'>";
+        this.id = id;
+        this.html = "<img id='" + this.id + "' src=" + this.color + " style='height: 100%;'>";
     }
     color = "";
     position = "";
     html = "";
+    id = 0;
 }
