@@ -25,9 +25,9 @@ function removePiece(position) {
     $("#" + position).remove("img");
 }
 
-function move(piece, position) {
-    removePiece(position);
-    addPiece(piece, position);
+function move(piece, prv, nxt) {
+    removePiece(prv);
+    addPiece(piece, nxt);
 }
 
 $(document).ready(function() {
