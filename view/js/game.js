@@ -1,4 +1,5 @@
 let game = new board();
+let temp = false;
 
 function newGame() {
     for (let pos of game.black) {
@@ -41,9 +42,9 @@ function move(piece, prv, nxt) {
         removePiece(piece, prv);
         addPiece(piece, nxt);
     }
+    $("#" + prv).removeClass("bg-primary").addClass("bg-dark");
+    temp = false;
 }
-
-let temp;
 
 $(document).ready(function() {
     let height = $(window).height();
@@ -56,6 +57,7 @@ $(document).ready(function() {
         let piece = game.pieces[id];
         if (!temp) {
             temp = piece;
+            $(this).removeClass("bg-dark").addClass("bg-primary");
         }
         else move(temp, temp.position, pos);
     });
