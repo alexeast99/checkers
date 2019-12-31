@@ -76,9 +76,9 @@ class board {
         else this.red.push(position);
     }
 
-    remove(piece, position) {
-        if (piece.color === "black") this.black.splice(this.black.indexOf(position), 1);
-        else this.red.splice(this.red.indexOf(position), 1);
+    remove(piece) {
+        if (piece.color === "black") this.black.splice(this.black.indexOf(piece.position), 1);
+        else this.red.splice(this.red.indexOf(piece.position), 1);
     }
 
     validJump(attacker, victim, nxt) {
@@ -90,6 +90,18 @@ class board {
         let lRn = this.letTnum(lRow);
 
         return Math.abs(fRn - lRn) === 2 && attacker.color !== victim.color;
+    }
+
+    isKing(piece) {
+        if (piece.color === "black" && piece.position[0] === "A") {
+            piece.html = "<img id='" + piece.id + "' src=" + "assets/images/king_black.svg" + " style='height: 100%;'>";
+            piece.king = true;
+            return true;
+        } else if (piece.color === "red" && piece.position[0] === "H") {
+            piece.html = "<img id='" + piece.id + "' src=" + "assets/images/king_red.svg" + " style='height: 100%;'>"
+            piece.king = true;
+            return true;
+        } else return false;
     }
 
 }

@@ -22,9 +22,9 @@ function addPiece(piece, position) {
     game.add(piece, position);
 }
 
-function removePiece(piece, position) {
-    $("#" + position).children("img").remove();
-    game.remove(piece, position);
+function removePiece(piece) {
+    $("#" + piece.position).children("img").remove();
+    game.remove(piece);
 }
 
 function deselect(id) {
@@ -81,19 +81,30 @@ function move(piece, nxt) {
         deselect(prv);
         return;
     } else if (Math.abs(fRn - lRn) === 1) {
-        removePiece(piece, prv);
+        removePiece(piece);
         addPiece(piece, nxt);
         changePlayer(piece);
+        makeKing(piece);
     } else {
         let victim = getVictim(prv, nxt);
         if (game.validJump(piece, victim, nxt)) {
-            removePiece(piece, prv);  //remove old piece
-            removePiece(victim, victim.position);  //remove jumped piece
+            removePiece(piece);  //remove old piece
+            removePiece(victim);  //remove jumped piece
             addPiece(piece, nxt);
             changeScore(piece);
+            makeKing(piece);
         }
     }
     deselect(prv);
+}
+
+function makeKing(piece) {
+    if (game.isKing(piece)) {
+        let html = piece.html;
+        let pos = piece.position;
+        removePiece(piece);
+        $("#" + pos).append(html);
+    }
 }
 
 $(document).ready(function() {
