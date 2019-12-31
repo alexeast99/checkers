@@ -41,6 +41,8 @@ function move(piece, prv, nxt) {
         console.log("valid move");
         removePiece(piece, prv);
         addPiece(piece, nxt);
+        if (piece.color === "black") game.changePlayer("red");
+        else game.changePlayer("black");
     }
     $("#" + prv).removeClass("bg-primary").addClass("bg-dark");
     temp = false;
@@ -55,11 +57,11 @@ $(document).ready(function() {
         let pos = $(this).attr("id");
         console.log(pos);
         let piece = game.pieces[id];
-        if (!temp) {
+        if (!temp && piece.color === game.turn) {
             temp = piece;
             $(this).removeClass("bg-dark").addClass("bg-primary");
         }
-        else move(temp, temp.position, pos);
+        else if (temp && temp.color === game.turn) move(temp, temp.position, pos);
     });
 
     newGame();

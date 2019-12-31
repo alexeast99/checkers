@@ -36,7 +36,14 @@ class board {
 
     }
 
+    changePlayer(nxt) {
+        this.turn = nxt;
+        $("#turn_ind").text(nxt + "'s Turn").css("text-transform", "capitalize");
+        $("#turn_ic").attr("src", "assets/images/decorative_" + nxt + ".svg");
+    }
+
     pieces = [];
+    turn = "black";
 }
 
 class piece {
