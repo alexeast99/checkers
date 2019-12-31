@@ -25,7 +25,42 @@ class board {
         "C0", "C2", "C4", "C6"
     ];
 
-    validMove(piece, prv, nxt) {
+    p1 = 0;
+    p2 = 0;
+
+    pieces = [];  //keeps track of pieces by ID (id == index)
+    turn = "black";
+
+    updateScore(piece) {
+        let player = piece.player;
+        if (player === "p1") {
+            this.p1 += 1;
+            return this.p1;
+        }
+        else {
+            this.p2 += 1;
+            return this.p2;
+        }
+    }
+
+    letTnum(letter) {
+        let diction = {
+            "A": 1, "B": 2, "C": 3, "D": 4,
+            "E": 5, "F": 6, "G": 7, "H": 8
+        };
+        return diction[letter];
+    }
+
+    numTlet(num) {
+        let diction = {
+            1: "A", 2: "B", 3: "C", 4: "D",
+            5: "E", 6: "F", 7: "G", 8: "H"
+        };
+        return diction[num];
+    }
+
+    validMove(piece, nxt) {
+        let prv = piece.position;
         if (this.gameBoard.indexOf(nxt) < 0 || this.black.indexOf(nxt) >= 0 || this.red.indexOf(nxt) >= 0) return false;
 
         if (piece.king) {
@@ -33,26 +68,40 @@ class board {
         } else if (piece.color === "red" && prv[0] < nxt[0]) {
             return true;
         } else return piece.color === "black" && prv[0] > nxt[0];
-
     }
 
-    changePlayer(nxt) {
-        this.turn = nxt;
-        $("#turn_ind").text(nxt + "'s Turn").css("text-transform", "capitalize");
-        $("#turn_ic").attr("src", "assets/images/decorative_" + nxt + ".svg");
+    add(piece, position) {
+        piece.position = position;
+        if (piece.color === "black") this.black.push(position);
+        else this.red.push(position);
     }
 
-    pieces = [];
-    turn = "black";
+    remove(piece, position) {
+        if (piece.color === "black") this.black.splice(this.black.indexOf(position), 1);
+        else this.red.splice(this.red.indexOf(position), 1);
+    }
+
+    validJump(attacker, victim, nxt) {
+        //checks if valid move and if total transaction involves exactly 3 rows (start, middle, end)
+        let prv = attacker.position;
+        let fRow = prv[0];  //letter of row
+        let lRow = nxt[0];
+        let fRn = this.letTnum(fRow);  //letter of row converted to number
+        let lRn = this.letTnum(lRow);
+
+        return Math.abs(fRn - lRn) === 2 && attacker.color !== victim.color;
+    }
+
 }
 
 class piece {
-    constructor(color, position, id) {
+    constructor(color, position, id, p) {
         this.color = color;
         this.src = "assets/images/decorative_" + color + ".svg";
         this.position = position;
         this.id = id;
         this.html = "<img id='" + this.id + "' src=" + this.src + " style='height: 100%;'>";
+        this.player = p;
     }
     src = "";
     color = "";
@@ -60,4 +109,5 @@ class piece {
     html = "";
     id = 0;
     king = false;
+    player = "";
 }
