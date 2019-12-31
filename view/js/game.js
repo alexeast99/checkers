@@ -59,10 +59,10 @@ function getVictim(prv, nxt) {
         nCn = Number(fCn) - 1;
     }
 
-    if (lRn > fRn) {  //moved up
-        nRn = lRn - 1;
+    if (lRn < fRn) {  //moved up
+        nRn = lRn + 1;
     } else {  //moved down
-        nRn = fRn + 1;
+        nRn = lRn - 1;
     }
 
     row = game.numTlet(nRn);
