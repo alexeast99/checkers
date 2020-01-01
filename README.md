@@ -9,11 +9,11 @@ easily accessible data about each, with methods to alter the state where appropr
 board are made with methods in the board class; the state in the piece class changes less, and so methods were not 
 created to change the state, but may be implemented later.
 
-For game play, jQuery event listeners were used to register where a user clicks on the board. The listeners waits for a 
+For game play, jQuery event listeners are used to register where a user clicks on the board. The listeners waits for a 
 user to click on a tile on the board, and retrieves the piece on that space if there is one. If there is a piece, the 
 color is checked against whose turn it is to determine whether or not to select that piece. Upon attempting to move, 
 a board class method is used to determine whether the move is valid, and if it is to tell the view to update the game. 
-The normal rules of checkers are followed for movement. There are two validators of movement in game, which validate 
+The normal rules of checkers are followed for movement. There are two validators of movement in the board class, which validate 
 normal movement and a jump. The latter case is almost the same as the former during execution, except that the turn is 
 not changed, the appropriate score is incremented, and the jumped piece disappears.
 
