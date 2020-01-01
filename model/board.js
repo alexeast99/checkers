@@ -104,6 +104,14 @@ class board {
         } else return false;
     }
 
+    win() {
+        if (this.red.length === 0) {
+            return "black";
+        } else if (this.black.length === 0) {
+            return "red";
+        } else return "";
+    }
+
 }
 
 class piece {

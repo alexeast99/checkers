@@ -72,6 +72,15 @@ function getVictim(prv, nxt) {
     return victim;
 }
 
+function checkWin() {
+    let winner = game.win();
+    if (winner === "") return;
+
+    $("#board").css("display", "none");
+    $("#over").css("display", "block");
+    $("#winner").text(winner + " Wins!").css("text-transform", "capitalize");
+}
+
 function move(piece, nxt) {
     let prv = piece.position;
     let fRn = game.letTnum(prv[0]);
@@ -84,18 +93,18 @@ function move(piece, nxt) {
         removePiece(piece);
         addPiece(piece, nxt);
         changePlayer(piece);
-        makeKing(piece);
     } else {
         let victim = getVictim(prv, nxt);
         if (game.validJump(piece, victim, nxt)) {
-            removePiece(piece);  //remove old piece
+            removePiece(piece);  //remove piece that moved from old position
             removePiece(victim);  //remove jumped piece
             addPiece(piece, nxt);
             changeScore(piece);
-            makeKing(piece);
         }
     }
+    makeKing(piece);
     deselect(prv);
+    checkWin();
 }
 
 function makeKing(piece) {
